@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" version="1.0" viewmodes="fullscreen" id="http://tizen.org/go" defaultlocale="en">
+	<icon src="Go_Icon_128.png"/>  
+	<content src="index.html"/>  
+	<name>Go</name> 
+	<author/>
+	<license/>
+</widget>
