@@ -1,18 +1,14 @@
 Go is a board game implemented with HTML5/Javascript technology.
 
-Author/Owner: Xinchao He <xinchao.he@intel.com>
+Author: Xinchao He <xinchao.he@intel.com>
+Owner: Carl Wong <carl.wong@intel.com>
 
 This application is written using HTML5/css3/jquery javascript library and is
 distributed under Apache2.0 license. 
 
-
-jQuery JavaScript Library v1.7.1
-Copyright 2011, John Resig
-Dual licensed under the MIT or GPL Version 2 licenses.
-http://jquery.org/license
-
 FONTS
 -----------------------------------------------------------------------------
+
 Google web font - Yesteryear
 http://www.google.com/webfonts/specimen/Yesteryear
 SIL Open Font License (OFL) License, version 1.1
@@ -28,6 +24,7 @@ License: http://wenq.org/index.cgi?MicroHei_BigBang_README
 
 SOUNDS
 -----------------------------------------------------------------------------
+
 Pieces_SinglePlaced_Alt.wav, Pieces_SinglePlaced.wav, 
 PiecesFillPocket.wav, SettingsAppearWoodSlide.wav
 These files were created by Intel Corp. and are licensed under 
@@ -56,7 +53,16 @@ License: http://creativecommons.org/licenses/by/3.0/
 
 IMAGES
 -----------------------------------------------------------------------------
+
 all images are created by Intel Corp.
 they are licensed under the Creative Commons Attribution 3.0 license
 http://creativecommons.org/licenses/by/3.0/us/
+
+LIBRARIES
+-----------------------------------------------------------------------------
+
+jQuery JavaScript Library v1.7.1
+Copyright 2011, John Resig
+Dual licensed under the MIT or GPL Version 2 licenses.
+http://jquery.org/license
 
