@@ -3,6 +3,7 @@
         "message": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
         "description": "Single concatination of all alphabet characters, no spaces"
     },
+    "locale": {"message": "en"},
     "name": {"message": "Go"},
     "description": {"message": "A Go game"},
 	"player": {"message": "Player"},
