@@ -58,11 +58,3 @@ all images are created by Intel Corp.
 they are licensed under the Creative Commons Attribution 3.0 license
 http://creativecommons.org/licenses/by/3.0/us/
 
-LIBRARIES
------------------------------------------------------------------------------
-
-jQuery JavaScript Library v1.7.1
-Copyright 2011, John Resig
-Dual licensed under the MIT or GPL Version 2 licenses.
-http://jquery.org/license
-

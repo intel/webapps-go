@@ -3,6 +3,7 @@
         "message": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
         "description": "除去空格之外的所有字符集合"
     },
+    "locale": {"message": "zh_CN"},
     "name": {"message": "围棋"},
     "description": {"message": "一个围棋游戏"},
 	"player": {"message": "选手"},
