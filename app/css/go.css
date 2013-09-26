@@ -17,12 +17,12 @@ a{
 
 @font-face{
 	font-family: default_font;
-	src: url('../fonts/Yesteryear-Regular.ttf');
+	src: url(../lib/yesteryear/Yesteryear-Regular.ttf);
 }
 
 @font-face{
 	font-family: sans_font;
-	src: url('../fonts/OpenSans-Bold.ttf');
+	src: url(../lib/open-sans/OpenSans-Bold.ttf);
 }
 
 .display_none {
