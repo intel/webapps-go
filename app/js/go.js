@@ -1055,6 +1055,8 @@ window.onload = function(){
     });
 
     Go.init();
+
+    scaleBody(document.getElementsByTagName("body")[0], 720);
 }
 
 

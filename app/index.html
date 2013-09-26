@@ -4,63 +4,59 @@
  *
  * This program is licensed under the terms and conditions of the
  * Apache License, version 2.0.  The full text of the Apache License is at
- * http://www.apache.org/licenses/LICENSE-2.0 
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
 -->
 <html>
-  <head>
-    <meta id="viewport_meta" name="viewport" content="" />
-    <script type="text/javascript">
-        var viewport_meta = document.getElementById('viewport_meta');
-        var w = (screen.orientation.indexOf("portrait") == 0)?screen.availWidth:screen.availHeight;
-        viewport_meta.setAttribute('content','width='+w+', user-scalable=no');
-    </script>
-    <title>Go</title>
-    <meta name="author" content="Xinchao He">
-	<link rel="stylesheet" href="css/go.css"/>
-  </head>
-  <body onselectstart="return false" ondragstart="return false" style="overflow:hidden;">
-    <div id="licensepage" style="display: none"></div>
-	<div id="theworld" class="world">
-	  <div class="left_pit"></div>
-	  <div class="right_pit"></div>
-	  <div class="left_arrow" align="center">
-		<span id="playerone"></span><br>
-		<span style="font-size:22pt;"><span name="score"></span>:<span id="left_score">0000</span></span>
-		<img class="player_arrow_img" src="images/GO_PlayerArrow_010612_a.png" />
-	  </div>
-	  <div class="right_arrow" align="center">
-		<span id="playertwo"></span><br>
-		<span style="font-size:22pt;"><span name="score"></span>:<span id="right_score">0000</span></span>
-		<img class="player_arrow_img" src="images/GO_PlayerArrow_010612_a.png" />
-	  </div>
-	  <img class="left_time_arrow" src="images/GO_TimerArrow_022212_a.png" />
-	  <img class="right_time_arrow" src="images/GO_TimerArrow_022212_a.png" />
-	  <div class="left_timer">
-		<img src="images/GO_Timer_010612_a.png" />
-		<span>20:00</span>
-	  </div>
-	  <div class="right_timer">
-		<img src="images/GO_Timer_010612_a.png" />
-		<span>20:00</span>
-	  </div>
-	  <a class="left_skip skip_arrow">
-	  </a>
-	  <a class="right_skip skip_arrow">
-	  </a>  
-	  <a onClick="javascript:Go.toggleSetting();" class="setting_icon"><img src="images/GO_SettingsIcon_010612_a.png" /></a>
-	  <a onClick="javascript:Go.undue('black');" class="undue_icon_left"><img src="images/GO_ReplayArrow_012012_b.png" /></a>
-	  <a onClick="javascript:Go.undue('white');" class="undue_icon_right"><img src="images/GO_ReplayArrow_012012_b.png" /></a>
-	  <a onClick="javascript:Go.start();" class="play_button display_none">
-		<div class="play_button_img">
-		  <span class="play_button_text text_shadow"></span>
-		</div>
-	  </a>
-	  <div class="setting_panel text_shadow display_none"></div>
-	  <div class="help_panel display_none"></div>
-	  <div class="win_panel text_shadow display_none"></div>
-	  <div class="board"></div>
-	</div>
-	<script type="text/javascript" src="js/go.js"></script>
-  </body>
+    <head>
+        <title>Go</title>
+        <meta name="viewport" content="width=device-width target-densitydpi=device-dpi initial-scale=1 maximum-scale=1 user-scalable=0"/>
+        <meta name="author" content="Xinchao He">
+        <link rel="stylesheet" href="css/go.css"/>
+    </head>
+    <body onselectstart="return false" ondragstart="return false" style="overflow:hidden;">
+        <div id="licensepage" style="display: none"></div>
+        <div id="theworld" class="world">
+            <div class="left_pit"></div>
+            <div class="right_pit"></div>
+            <div class="left_arrow" align="center">
+                <span id="playerone"></span><br>
+                <span style="font-size:22pt;"><span name="score"></span>:<span id="left_score">0000</span></span>
+                <img class="player_arrow_img" src="images/GO_PlayerArrow_010612_a.png" />
+            </div>
+            <div class="right_arrow" align="center">
+                <span id="playertwo"></span><br>
+                <span style="font-size:22pt;"><span name="score"></span>:<span id="right_score">0000</span></span>
+                <img class="player_arrow_img" src="images/GO_PlayerArrow_010612_a.png" />
+            </div>
+            <img class="left_time_arrow" src="images/GO_TimerArrow_022212_a.png" />
+            <img class="right_time_arrow" src="images/GO_TimerArrow_022212_a.png" />
+            <div class="left_timer">
+                <img src="images/GO_Timer_010612_a.png" />
+                <span>20:00</span>
+            </div>
+            <div class="right_timer">
+                <img src="images/GO_Timer_010612_a.png" />
+                <span>20:00</span>
+            </div>
+            <a class="left_skip skip_arrow">
+            </a>
+            <a class="right_skip skip_arrow">
+            </a>
+            <a onClick="javascript:Go.toggleSetting();" class="setting_icon"><img src="images/GO_SettingsIcon_010612_a.png" /></a>
+            <a onClick="javascript:Go.undue('black');" class="undue_icon_left"><img src="images/GO_ReplayArrow_012012_b.png" /></a>
+            <a onClick="javascript:Go.undue('white');" class="undue_icon_right"><img src="images/GO_ReplayArrow_012012_b.png" /></a>
+            <a onClick="javascript:Go.start();" class="play_button display_none">
+                <div class="play_button_img">
+                    <span class="play_button_text text_shadow"></span>
+                </div>
+            </a>
+            <div class="setting_panel text_shadow display_none"></div>
+            <div class="help_panel display_none"></div>
+            <div class="win_panel text_shadow display_none"></div>
+            <div class="board"></div>
+        </div>
+        <script type="text/javascript" src="js/scaleBody.js"></script>
+        <script type="text/javascript" src="js/go.js"></script>
+    </body>
 </html>
