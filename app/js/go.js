@@ -905,41 +905,11 @@ Go.showLicense = function(id, hpageid) {
 
     var lpage = document.getElementById(id+"page");
     var hpage = document.getElementById(hpageid);
-    var ltext;
-    var lscroll;
+    var ltext = document.getElementById(id+"text");
+    var lscroll = document.getElementById(id+"scroll");
     var timer;
 
-    if (!this.hasLicense) {
-        $('#licensepage').html('<div id="licensetext"><div id="licensescroll"></div></div> <div id="licensebtnq" class="licensebtn">Back</div>');
-        lscroll = document.getElementById(id+"scroll");
-        var request = new XMLHttpRequest();
-        request.open("GET", "README.txt", false);
-        request.onload = function(e) {
-            var text = this.responseText;
-            text = text.replace("<","&lt;");
-            text = text.replace(">","&gt;");
-            var lines = text.split("\n");
-            lines[0] = "<br><br>"+lines[0];
-            for(var i in lines)
-            {
-                if(lines[i].match(/--------------------/))
-                {
-                    lines[i] = "";
-                }
-                else
-                {
-                    lines[i] += "<br>";
-                }
-            }
-            lscroll.innerHTML = lines.join("\n");
-        }
-        request.send();
-        this.hasLicense = true;
-    }
-
     var btnq = document.getElementById(id+"btnq");
-    lscroll = document.getElementById(id+"scroll");
-    ltext = document.getElementById(id+"text");
     /* initialize scroll rate */
     var dY = 2;
     var t0 = 0;
