@@ -1,6 +1,6 @@
 {
   "name": "Go",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The board game.",
   "main": "app/index.html",
   "scripts": {
