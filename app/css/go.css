@@ -22,7 +22,7 @@ a{
 
 @font-face{
 	font-family: sans_font;
-	src: url(../lib/open-sans/OpenSans-Bold.ttf);
+	src: url(../lib/open-sans-bold/index.woff);
 }
 
 .display_none {
