@@ -105,14 +105,14 @@ Go.init = function(){
     }
     this.drawBoard();
     this.soundSource = {
-        'end': 'sounds/GameEndChimes.wav',
-        'setStone': 'sounds/Pieces_SinglePlaced.wav',
-        'dropStone': 'sounds/PiecesFillPocket.wav',
-        'positive': 'sounds/PositiveSound.wav',
-        'settingbtn': 'sounds/SettingsButton.wav',
-        'settingck': 'sounds/SettingsButtonCheck.wav',
-        'settingon': 'sounds/SettingsAppearWoodSlide.wav',
-        'dida': 'sounds/ClockTicking_Loop.wav',
+        'end': 'audio/GameEndChimes.wav',
+        'setStone': 'audio/Pieces_SinglePlaced.wav',
+        'dropStone': 'audio/PiecesFillPocket.wav',
+        'positive': 'audio/PositiveSound.wav',
+        'settingbtn': 'audio/SettingsButton.wav',
+        'settingck': 'audio/SettingsButtonCheck.wav',
+        'settingon': 'audio/SettingsAppearWoodSlide.wav',
+        'dida': 'audio/ClockTicking_Loop.wav',
     };
 
     this.sounds = {};
