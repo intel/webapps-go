@@ -7,62 +7,6 @@
  *
  */
 
-function queryObj(obj) {
-    this.q = obj;
-    this.isNull = this.q?false:true;
-    this.self = this;
-    this.html = function (val) {
-        this.q.innerHTML = val;
-        return this;
-    }
-
-    this.hasClass = function (c_name) {
-        if (this.isNull)
-            return false;
-        return this.q.classList.contains(c_name);
-    }
-
-    this.addClass = function (c_name) {
-        if (this.isNull)
-            return this;
-        var list = this.q.classList;
-        list.add (c_name);
-        return this;
-    }
-
-    this.removeClass = function (c_name) {
-        if (this.isNull)
-            return this;
-        var list = this.q.classList;
-        list.remove (c_name);
-        return this;
-    }
-
-    this.click = function (fun) {
-        if (this.isNull)
-            return this;
-        this.q.onclick = fun;
-        return this;
-    }
-
-    this.attr = function (attr, val) {
-        if (this.isNull)
-            return this;
-        this.q.setAttribute(attr, val);
-        return this;
-    }
-}
-
-function $(selector) {
-    var res;
-    if (typeof selector == "string") {
-        res = document.querySelector(selector);
-    } else {
-        res = selector;
-    }
-    return new queryObj(res);
-}
-
 function gamesound(src, loop) {
     var me = this;
     this.soundobj = new Audio(src);
@@ -260,7 +204,25 @@ Go.stop = function(){
 Go.initWinMessage = function() {
     if (!this.hasWinMessage) {
         var winmsg = $('.'+this.winMessage);
-        winmsg.html('<a onClick="javascript:Go.disable('+"'.win_panel');"+'" class="win_exit">X</a> <div class="win_arrow" align="center"> <span style="font-size:55pt;"><span name="player"></span><span id="win_player"></span></span><br> <span style="font-size:70pt;" id="win_result"></span> <img class="win_arrow_img" src="images/GO_WinArrow_012012_a.png" /> </div> <a onClick="javascript:Go.start();" class="replay"> </a>');
+        winmsg.html(
+            '<a class="win_exit">X</a>'+
+              '<div class="win_arrow" align="center">'+
+                '<span style="font-size:55pt;">'+
+                  '<span name="player"></span>'+
+                  '<span id="win_player"></span>'+
+                '</span>'+
+                '<br>'+
+                '<span id="win_result" style="font-size:70pt;"></span>'+
+                '<img class="win_arrow_img" src="images/GO_WinArrow_012012_a.png" />'+
+              '</div>'+
+              '<a class="replay"></a>'
+              )
+            .on('click','a.win_exit',function() {
+              Go.disable('.win_panel');
+            })
+            .on('click','a.replay',function() {
+              Go.start();
+            });
         $('.replay').html(getMessage('newGame', 'New Game'));
         $('span[name="player"]').html(getMessage('player', 'Player'));
         this.hasWinMessage = true;
@@ -326,16 +288,46 @@ Go.toggleSetting = function(){
 Go.initSettingPanel = function() {
     if (!this.hasSettingPanel) {
         var panel = $('.setting_panel');
-        panel.html('<a onClick="javascript:Go.toggleHelp();" class="setting_help">?</a> <a onClick="javascript:Go.toggleSetting();" class="setting_exit">X</a> <div id="licensebtnl" style="top: 490px; left: 405px;"> i </div> <div class="setting_arrow" align="center"> <span></span> <img class="setting_arrow_img" src="images/GO_SettingsArrow_010612_a.png" /> </div> <div class="setting_sound"> <span></span> <a onClick="javascript:Go.toggleSound();"><img class="setting_sound_check" src="images/GO_Checkbox_010612_a.png" /></a> </div> <div class="setting_timer"> <span></span> <a onClick="javascript:Go.toggleTimer();"><img class="setting_timer_check" src="images/GO_Checkbox_010612_a.png" /></a> </div> <div class="setting_restart"> <span></span> <a onClick="javascript:Go.toggleRestart();"><img class="setting_restart_check" src="images/GO_Checkbox_010612_a.png" /></a> </div> <div class="setting_quit"> <span class="setting_quit_text"></span> <a onClick="javascript:Go.toggleQuit();"><img class="setting_quit_check" src="images/GO_Checkbox_010612_a.png" /></a> </div> <a onClick="javascript:Go.toggleSetting();" class="setting_resume setting_resume_inactive" align="center"> </a>');
+        panel.html(
+            '<a class="setting_help">?</a>'+
+            '<a class="setting_exit">X</a>'+
+            '<div id="licensebtnl" style="top: 490px; left: 405px;"> i </div>'+
+            '<div class="setting_arrow" align="center">'+
+              '<span></span>'+
+              '<img class="setting_arrow_img" src="images/GO_SettingsArrow_010612_a.png" />'+
+            '</div>'+
+            '<div class="setting_sound">'+
+              '<span></span>'+
+              '<a><img class="setting_sound_check" src="images/GO_Checkbox_010612_a.png" /></a>'+
+            '</div>'+
+            '<div class="setting_timer">'+
+              '<span></span>'+
+              '<a><img class="setting_timer_check" src="images/GO_Checkbox_010612_a.png" /></a>'+
+            '</div>'+
+            '<div class="setting_restart">'+
+              '<span></span>'+
+              '<a><img class="setting_restart_check" src="images/GO_Checkbox_010612_a.png" /></a>'+
+            '</div>'+
+            '<div class="setting_quit">'+
+              '<span class="setting_quit_text"></span>'+
+              '<a><img class="setting_quit_check" src="images/GO_Checkbox_010612_a.png" /></a>'+
+            '</div>'+
+            '<a class="setting_resume setting_resume_inactive" align="center"></a>')
+        .on('click','a.setting_exit',function() { Go.toggleSetting(); })
+        .on('click','a.setting_help',function() { Go.toggleHelp(); })
+        .on('click','a.setting_resume',function() { Go.toggleSetting(); })
+        .on('click','div.setting_quit',function() { Go.toggleQuit(); })
+        .on('click','div.setting_restart a',function() { Go.toggleRestart(); })
+        .on('click','div.setting_sound a',function() { Go.toggleSound(); })
+        .on('click','div.setting_timer a',function() { Go.toggleTimer(); });
+
         $('.setting_arrow span').html(getMessage('settings', 'Settings'));
         $('.setting_sound span').html(getMessage('sound_setting', 'Sound FX....'));
         $('.setting_timer span').html(getMessage('timer_setting', 'Timer...........'));
         $('.setting_restart span').html(getMessage('restart', 'Restart'));
         $('.setting_quit span').html(getMessage('quit', 'Quit'));
         $('.setting_resume').html(getMessage('resume', 'Submit'));
-        $('#licensebtnl').click(function(){
-            Go.showLicense("license", "theworld");
-        });
+        $('#licensebtnl').click(function(){ Go.showLicense("license", "theworld"); });
 
         this.hasSettingPanel = true;
     }
@@ -443,7 +435,11 @@ Go.toggleQuit = function(){
 Go.toggleHelp = function() {
     var help = $('.'+this.helpPanel);
     if (!this.hasHelp) {
-        help.html('<a onClick="javascript:Go.toggleHelp();" class="help_exit text_shadow">X</a> <div class="help_title text_shadow" ></div> <div class="help_text" > &nbsp;&nbsp;&nbsp;&nbsp;Take turns placing a stone on a vacant intersections (points) of the grid on a Go board. Black moves first. Once placed, a stone may not be moved, and can be removed only if captured. If a player believes he has no useful moves, he may skip his move (pass).<br> &nbsp;&nbsp;&nbsp;&nbsp;Vertically and horizontally adjacent stones of the same color form a chain (also called a string, or group) that shares liberties (adjacent, empty spaces) in common. These chains cannot be divided, and in effect becomes a single larger stone. Chains may be expanded by placing additional stones on adjacent points, and can be connected by placing a stone on a points adjacent to two or more chains of the same color.<br> &nbsp;&nbsp;&nbsp;&nbsp;A chain of stones must have at least one liberty to remain on the board. When a chain is surrounded by opposing stones so that it has no liberties, it is captured and removed from the board.<br> &nbsp;&nbsp;&nbsp;&nbsp;The game ends when both players have passed (clicked Skip) consecutively. The player who scores more points (the number of empty points, or intersections, surrounded by their pieces, plus the number of stones they'+"'" + 've captured) wins.<br> &nbsp;&nbsp;&nbsp;&nbsp;For more information on how to play Go, see the Wikipedia article on the game: <span><a style="opacity: 0.6; color: #0000FF" href="http://en.wikipedia.org/wiki/Go_(game)">http://en.wikipedia.org/wiki/Go_(game)</a></span>. </div>');
+        help.html(
+            '<a class="help_exit text_shadow">X</a>'+
+            '<div class="help_title text_shadow"></div>'+
+            '<div class="help_text">&nbsp;&nbsp;&nbsp;&nbsp;Take turns placing a stone on a vacant intersections (points) of the grid on a Go board. Black moves first. Once placed, a stone may not be moved, and can be removed only if captured. If a player believes he has no useful moves, he may skip his move (pass).<br> &nbsp;&nbsp;&nbsp;&nbsp;Vertically and horizontally adjacent stones of the same color form a chain (also called a string, or group) that shares liberties (adjacent, empty spaces) in common. These chains cannot be divided, and in effect becomes a single larger stone. Chains may be expanded by placing additional stones on adjacent points, and can be connected by placing a stone on a points adjacent to two or more chains of the same color.<br> &nbsp;&nbsp;&nbsp;&nbsp;A chain of stones must have at least one liberty to remain on the board. When a chain is surrounded by opposing stones so that it has no liberties, it is captured and removed from the board.<br> &nbsp;&nbsp;&nbsp;&nbsp;The game ends when both players have passed (clicked Skip) consecutively. The player who scores more points (the number of empty points, or intersections, surrounded by their pieces, plus the number of stones they'+"'" + 've captured) wins.<br> &nbsp;&nbsp;&nbsp;&nbsp;For more information on how to play Go, see the Wikipedia article on the game: <span><a style="opacity: 0.6; color: #0000FF" href="http://en.wikipedia.org/wiki/Go_(game)">http://en.wikipedia.org/wiki/Go_(game)</a></span>. </div>')
+          .on('click','a.help_exit',function() { Go.toggleHelp(); });
         $('.help_title').html(getMessage('rules', 'Rules'));
         var help_text = getMessage('help');
         if (help_text.length > 0) {
@@ -460,8 +456,15 @@ Go.toggleHelp = function() {
 }
 
 Go.drawBoard = function(){
+    var $boardview = $('.'+this.boardview);
     var str = '';
     var style=['margin:1px 0px 9px 0px;','margin:0px 10px 9px 0px;','margin:0px 9px 10px 0px;'];
+    var makeClickHandler = function(i,j) {
+      return function() {
+        Go.click(i,j);
+      };
+    };
+
     for (var i=0; i<this.bounder; i++){
         var margin=style[2];
         if (i<6) margin = style[0];
@@ -471,12 +474,13 @@ Go.drawBoard = function(){
             if (j<6) margin = style[1];
             if (i>8) margin += 'position:relative;top:-5px;';
             str += '<span style="float:left;width:36px;height:36px;'+margin
-                +'"><a onClick="javascript:Go.click('+i+','+j+');" class="img_style" ><img src="'
+                +'"><a class="img_style" ><img src="'
                 +this.texture[this.board[i][j]]+'" id="a'+i+j+'" class="board_img" /></a></span>';
+            $boardview.on('click','#a'+i+j,makeClickHandler(i,j));
         }
         str += '</div>';
     }
-    $('.'+this.boardview).html(str);
+    $boardview.html(str);
 }
 
 Go.click = function(i, j){
@@ -958,11 +962,11 @@ Go.showLicense = function(id, hpageid) {
         }
     }, 40);
 
-    btnq.onclick = function() {
+    $(btnq).on('click', function() {
         hpage.style.display="block";
         lpage.style.display="none";
         clearInterval(timer);
-    }
+    });
 }
 
 var messages;
@@ -995,6 +999,31 @@ function getMessage(key, alter) {
 
 var locale;
 
+function registerEventHandlers() {
+  $("body")
+    .on("selectstart",function() {
+      return false;
+    })
+    .on("dragstart",function() {
+      return false;
+    })
+    /* a.setting_icon */
+    .on("click","a.setting_icon",function() {
+       Go.toggleSetting();
+    })
+    .on("click","a.undue_icon_left",function() {
+       Go.undue('black');
+    })
+    .on("click","a.undue_icon_right",function() {
+       Go.undue('white');
+    })
+    .on("click","a.play_button",function() {
+       Go.start();
+    })
+
+    ;
+};
+
 window.onload = function(){
     locale = getMessage('locale', 'en');
     if (locale != 'en') {
@@ -1026,7 +1055,9 @@ window.onload = function(){
 
     Go.init();
 
+    registerEventHandlers();
+
     scaleBody(document.getElementsByTagName("body")[0], 720);
-}
+};
 
 

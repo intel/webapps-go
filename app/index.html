@@ -14,7 +14,7 @@
         <meta name="author" content="Xinchao He">
         <link rel="stylesheet" href="css/go.css"/>
     </head>
-    <body onselectstart="return false" ondragstart="return false" style="overflow:hidden;">
+    <body style="overflow:hidden;">
         <div id="licensepage" style="display: none">
             <div id="licensetext">
                 <div id="licensescroll">
@@ -113,10 +113,10 @@
             </a>
             <a class="right_skip skip_arrow">
             </a>
-            <a onClick="javascript:Go.toggleSetting();" class="setting_icon"><img src="images/GO_SettingsIcon_010612_a.png" /></a>
-            <a onClick="javascript:Go.undue('black');" class="undue_icon_left"><img src="images/GO_ReplayArrow_012012_b.png" /></a>
-            <a onClick="javascript:Go.undue('white');" class="undue_icon_right"><img src="images/GO_ReplayArrow_012012_b.png" /></a>
-            <a onClick="javascript:Go.start();" class="play_button display_none">
+            <a class="setting_icon"><img src="images/GO_SettingsIcon_010612_a.png" /></a>
+            <a class="undue_icon_left"><img src="images/GO_ReplayArrow_012012_b.png" /></a>
+            <a class="undue_icon_right"><img src="images/GO_ReplayArrow_012012_b.png" /></a>
+            <a class="play_button display_none">
                 <div class="play_button_img">
                     <span class="play_button_text text_shadow"></span>
                 </div>
@@ -126,6 +126,7 @@
             <div class="win_panel text_shadow display_none"></div>
             <div class="board"></div>
         </div>
+        <script src="lib/intel-appframework/appframework.min.js"></script>
         <script type="text/javascript" src="js/scaleBody.js"></script>
         <script type="text/javascript" src="js/go.js"></script>
     </body>
